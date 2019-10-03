@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
 	bool simulate = false;
 
-	int gridWidth = 10;
-	int gridHeight = 10;
+	int gridWidth = 50;
+	int gridHeight = 50;
 
 	float cellDimension = 3.3f;
 	float cellSpacing = 0.2f;
@@ -78,19 +78,19 @@ public class GameManager : MonoBehaviour
 				List<CellScript> liveNeighbors = gatherLiveNeighbors(x, y);
 				//Apply the 4 rules from Conway's Gaem of Life (https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 				//1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
-				if (grid[x, y].alive && liveNeighbors.Count < 2) {
+				if (grid[x, y].alive && liveNeighbors.Count < 1) {
 					grid[x, y].nextAlive = false;
 				}
 				//2. Any live cell with two or three live neighbours lives on to the next generation.
-				else if (grid[x, y].alive && (liveNeighbors.Count == 2 || liveNeighbors.Count == 3)) {
+				else if (grid[x, y].alive && (liveNeighbors.Count == 1 || liveNeighbors.Count == 3)) {
 					grid[x, y].nextAlive = true;
 				}
 				//3. Any live cell with more than three live neighbours dies, as if by overpopulation.
-				else if (grid[x, y].alive && liveNeighbors.Count > 3) {
+				else if (grid[x, y].alive && liveNeighbors.Count > 2) {
 					grid[x, y].nextAlive = false;
 				}
 				//4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-				else if (!grid[x, y].alive && liveNeighbors.Count == 3) {
+				else if (!grid[x, y].alive && liveNeighbors.Count == 2) {
 					grid[x, y].nextAlive = true;
 				}
 			}
