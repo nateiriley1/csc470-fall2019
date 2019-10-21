@@ -9,20 +9,23 @@ public class GameManager : MonoBehaviour
 	// This will hold a reference to whichever Unit was selected last.
 	UnitScript selectedUnit;
 
-
+	// References to a handful of UI elements.
+	public GameObject talkBox;
+	public Text talkText;
+	public ToggleGroup actionSelectToggleGroup;
 	public GameObject selectedPanel;
 	public Text nameText;
 	public Image portraitImage;
 
 	// Start is called before the first frame update
 	void Start()
-    {
-        
-    }
+	{
 
-    // Update is called once per frame
-    void Update()
-    {
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
 		// Input.GetMouseButtonDown(0) is how you detect that the left mouse button has been clicked.
 		//
 		// The IsPointerOverGameObject makes sure the pointer is over the UI. In this case,
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
 					selectedUnit.setColorOnMouseState();
 					selectedUnit = null;
 
-					updateUI();
+					updateSelectedPanelUI();
 				}
 			}
 		}
@@ -66,16 +69,20 @@ public class GameManager : MonoBehaviour
 			selectedUnit.setColorOnMouseState();
 		}
 
-		// Select the unit that was passed in, and update its color.
+		// Set selected unit to the one we just passed in.
 		selectedUnit = unit;
-		selectedUnit.selected = true;
-		selectedUnit.setColorOnMouseState();
 
-		updateUI();
+		if (selectedUnit != null) {
+			// If there is a selected unit, update its color.
+			selectedUnit.selected = true;
+			selectedUnit.setColorOnMouseState();
+		}
+
+		updateSelectedPanelUI();
 	}
 
 	// This function updates the UI elements based on what was clicked on.
-	void updateUI()
+	void updateSelectedPanelUI()
 	{
 		// Only update the UI is there is a unit selected.
 		if (selectedUnit != null) {
@@ -86,5 +93,46 @@ public class GameManager : MonoBehaviour
 			// If there is no selected unit, turn the panel off.
 			selectedPanel.SetActive(false);
 		}
+	}
+
+	// This function is called by the EventSystem when the player clicks on the PerformActionButton.
+	public void TakeAction()
+	{
+		// Compute the screen position 2 units above the unit and place the talkBox.
+		Vector3 pos = selectedUnit.transform.position + Vector3.up * 2;
+		pos = Camera.main.WorldToScreenPoint(pos);
+		talkBox.transform.position = pos;
+
+		// Figure out which toggle button is selected in the action select toggleGroup
+		// and store the text value of the button in a string.
+		IEnumerable<Toggle> activeToggles = actionSelectToggleGroup.ActiveToggles();
+		string action = "";
+		foreach (Toggle t in activeToggles) {
+			if (t.IsActive()) {
+				action = t.gameObject.GetComponentInChildren<Text>().text;
+			}
+		}
+
+		// This registers a function with Unity's coroutine system (see notes above the function definition)
+		StartCoroutine(displayTalkBoxMessages(new string[] { action, "I'm done talking" }));
+	}
+
+	// This type of function is registered with Unity's coroutine system. It doesn't run like
+	// other functions (from top to bottom), but instead each update cycle is first
+	// ran until some "yield return..." command is reached. After that point, the function
+	// is "checked in" with automatically starting from the line after the "yield 
+	// return...". This happens until the end of the function is reached.
+	//
+	// This particular coroutine recieves an array of string messages and displays each
+	// for each seconds.
+	IEnumerator displayTalkBoxMessages(string[] messages)
+	{
+		float timePerLine = 2 * messages.Length;
+		talkBox.SetActive(true);
+		for (int i = 0; i < messages.Length; i++) {
+			talkText.text = messages[i];
+			yield return new WaitForSeconds(timePerLine);
+		}
+		talkBox.SetActive(false);
 	}
 }
