@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-
+        //SceneManager.LoadScene("Menu");
 	}
 
 	// Update is called once per frame
@@ -131,7 +132,11 @@ public class GameManager : MonoBehaviour
 		talkBox.SetActive(true);
 		for (int i = 0; i < messages.Length; i++) {
 			talkText.text = messages[i];
-			yield return new WaitForSeconds(timePerLine);
+			//yield return new WaitForSeconds(timePerLine);
+            while (!Input.GetKeyDown(KeyCode.Space))
+            {
+                yield return null;
+            }
 		}
 		talkBox.SetActive(false);
 	}
