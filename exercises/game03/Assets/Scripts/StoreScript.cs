@@ -19,7 +19,8 @@ public class StoreScript : MonoBehaviour
     private float winningMoney = 100000;
     public GameObject winningText;
     public Text winningTextfinal;
-
+    private float temp;
+    private float temp2 = 1;
 
     void Start()
     {
@@ -30,14 +31,16 @@ public class StoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        temp = Time.deltaTime * temp2;
 
-        CurrentMoney += Time.deltaTime + moneyPerSecond;
+        CurrentMoney += temp + moneyPerSecond;
         money.text = CurrentMoney.ToString();
 
         forward.fillAmount = CurrentMoney / winningMoney;
 
         if (CurrentMoney >= winningMoney)
         {
+            temp2 = 0;
             MoneyOnClick = 0;
             moneyPerSecond = 0;
             string action = "MONEY!!!!!!!!!!!!!";
