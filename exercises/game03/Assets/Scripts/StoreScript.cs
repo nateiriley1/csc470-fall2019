@@ -13,11 +13,12 @@ public class StoreScript : MonoBehaviour
     private float CurrentMoney = 0;
     private float MoneyOnClick = 5;
     private float moneyPerSecond = 0.001f;
+    public Text CurrentPerSecMoneyShow;
+    public Text CurrentOnClickMoneyShow;
 
     private int score = 0;
     private string Score;
     public Text FinalScore;
-
 
     private GameObject MPS;
     private GameObject cookieClicker;
@@ -58,6 +59,10 @@ public class StoreScript : MonoBehaviour
         temp = Time.deltaTime * temp2;
 
         CurrentMoney += temp + moneyPerSecond;
+
+        CurrentPerSecMoneyShow.text = moneyPerSecond.ToString("0.000");
+        CurrentOnClickMoneyShow.text = MoneyOnClick.ToString("0.00");
+
         money.text = CurrentMoney.ToString("0.00");
 
         moneyInGoals.text = "You have $" + CurrentMoney.ToString("0.00") + "/$10,000,000";
