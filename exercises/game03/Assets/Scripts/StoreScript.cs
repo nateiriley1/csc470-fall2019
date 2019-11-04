@@ -203,7 +203,7 @@ public class StoreScript : MonoBehaviour
 
     public void TableSet()
     {
-        if (!tableset.activeSelf && CurrentMoney >= 10000)
+        if (!tableset.activeSelf && CurrentMoney >= 100000)
         {
 
             tableset.SetActive(true);
@@ -214,7 +214,7 @@ public class StoreScript : MonoBehaviour
     }
     public void Bed()
     {
-        if (!bed.activeSelf && CurrentMoney >= 10000)
+        if (!bed.activeSelf && CurrentMoney >= 1000000)
         {
 
             bed.SetActive(true);
