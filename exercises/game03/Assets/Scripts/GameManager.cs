@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     // This function is called by the EventSystem when the player clicks on the PerformActionButton.
     public void TakeAction()
     {
@@ -118,11 +119,11 @@ public class GameManager : MonoBehaviour
         // Figure out which toggle button is selected in the action select toggleGroup
         // and store the text value of the button in a string.
         IEnumerable<Toggle> activeToggles = actionSelectToggleGroup.ActiveToggles();
-        string action = "MONEY!!!!!!!!!!!!!";
+        string action = "I want money and a good place to live.";
         
 
         // This registers a function with Unity's coroutine system (see notes above the function definition)
-        StartCoroutine(displayTalkBoxMessages(new string[] { action, "Give Me More" }));
+        StartCoroutine(displayTalkBoxMessages(new string[] { action, "I Want More!", "This is not enough!!" }));
     }
 
     // This type of function is registered with Unity's coroutine system. It doesn't run like
