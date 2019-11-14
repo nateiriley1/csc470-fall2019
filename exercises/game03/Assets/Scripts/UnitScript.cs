@@ -17,6 +17,8 @@ public class UnitScript : MonoBehaviour
 	CharacterController cc;
 	public Vector3 destination;
 
+    Animator animator;
+
 	// NOTE: We set this reference in the prefab editor within the Unity editor.
 	public Renderer rend;
 
@@ -31,6 +33,8 @@ public class UnitScript : MonoBehaviour
 		// a component on a GameObject.
 		GameObject gmObj = GameObject.Find("GameManagerObject");
 		gm = gmObj.GetComponent<GameManager>();
+
+
 
 		// Get a reference to the CharacterController component on the gameObject (i.e. unit)
 		cc = gameObject.GetComponent<CharacterController>();
@@ -60,6 +64,8 @@ public class UnitScript : MonoBehaviour
 			transform.rotation = Quaternion.LookRotation(newDir);
 
 			cc.Move(transform.forward * 5 * Time.deltaTime);
+
+            animator.SetFloat("speed", (transform.forward * 5 * Time.deltaTime).magnitude);
 		}
 	}
 
