@@ -28,6 +28,7 @@ public class PlayerMouse : MonoBehaviour
         smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
         mouseLook += smoothV;
 
+
         transform.localRotation = Quaternion.AngleAxis(mouseLook.y, Vector3.left);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
 
