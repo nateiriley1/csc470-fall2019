@@ -1,0 +1,11 @@
+Items
+Sword - +10 damage
+Shield - + 10 Health
+Fang - 10% Lifesteal
+Boots - +10% Speed
+Suit of Armor +10 Health and - 10% speed
+
+Guns
+pistol - semi-auto, inf ammo, 1 damage
+shot gun - semi-auto, 50 bullets, 5 damage if close, 2 if far
+assualt rifle - full-auto, 100 bullets, 3 damage per bullet
