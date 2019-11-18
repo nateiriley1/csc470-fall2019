@@ -1,0 +1,94 @@
+# Exported from 3D Builder
+
+newmtl RCornea
+Kd 1.000000 1.000000 1.000000
+
+newmtl REyewhite
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  eyes 01.jpg
+
+newmtl RPupil
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  eyes 01.jpg
+
+newmtl RIris
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  eyes 01.jpg
+
+newmtl LCornea
+Kd 1.000000 1.000000 1.000000
+
+newmtl LEyewhite
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  eyes 01.jpg
+
+newmtl LPupil
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  eyes 01.jpg
+
+newmtl LIris
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  eyes 01.jpg
+
+newmtl SkinHead
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 02.jpg
+
+newmtl SkinScalp
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl Lips
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl EyeSocket
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 02.jpg
+
+newmtl InnerMouth
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl Nostrils
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl Lacrimal
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl Eyelashes
+Kd 0.000000 0.000000 0.000000
+
+newmtl Eyebrows
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl Teeth
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer  teeth.jpg
+
+newmtl Gums
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl Tongue
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer Diff 01.jpg
+
+newmtl SkinTorso
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer skinbody 01.jpg
+
+newmtl SkinNeck
+Kd 1.000000 1.000000 1.000000
+map_Kd Engel cadian officer skinbody 01.jpg
+
+newmtl gloves
+Kd 1.000000 1.000000 1.000000
+map_Kd Gloves ENGEL-V3.jpg
+
+newmtl Body
+Kd 1.000000 1.000000 1.000000
+map_Kd engel_uniform  black leather V3.jpg
