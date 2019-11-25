@@ -8111,7 +8111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet_Emitter: {fileID: 371256974}
   Bullet: {fileID: 1126950895775825514, guid: 73547026dab5e21479055800cd569f10, type: 3}
-  Bullet_Forward_Force: 90
+  Bullet_Forward_Force: 10000
 --- !u!1001 &510041146
 PrefabInstance:
   m_ObjectHideFlags: 0
