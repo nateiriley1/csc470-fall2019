@@ -39495,6 +39495,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1870013744}
+    - target: {fileID: 3990309803002665823, guid: c7309cd6ce882144e89b7d9f2c680317,
+        type: 3}
+      propertyPath: sightDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3990309801850081695, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
       propertyPath: m_IsActive
