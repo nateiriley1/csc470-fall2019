@@ -16,13 +16,5 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider Bullet)
-    {
-
-        if (Bullet.gameObject.CompareTag("BadGuy"))
-        {
-            gameObject.SetActive(false);
-        }
-
-    }
+    
 }

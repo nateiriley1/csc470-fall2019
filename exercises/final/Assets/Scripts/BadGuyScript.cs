@@ -10,6 +10,7 @@ public class BadGuyScript : MonoBehaviour
 
     public GameObject Player;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,15 @@ public class BadGuyScript : MonoBehaviour
     void Update()
     {
         gameObject.transform.LookAt(Player.transform, Vector3.up);
-        transform.position = transform.position + transform.forward * speed * Time.deltaTime;
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+
     }
 }

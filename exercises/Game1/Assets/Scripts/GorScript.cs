@@ -18,11 +18,6 @@ public class GorScript : MonoBehaviour
     void Update()
     {
 
-
-        //Vector3 vecToHouse = houseObj.transform.position - gameObject.transform.position;
-        //vecToHouse = vecToHouse.normalized;
-        //transform.position = transform.position + transform.forward * speed * Time.deltaTime;
-
         gameObject.transform.LookAt(Player.transform, Vector3.up);
         transform.position = transform.position + transform.forward * speed * Time.deltaTime;
     }
