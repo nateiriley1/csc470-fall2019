@@ -7,6 +7,8 @@ TagManager:
   - BadGuy
   - Bullet
   - Room
+  - gun
+  - loot
   layers:
   - Default
   - TransparentFX
