@@ -9,7 +9,6 @@ public class BadGuyScript : MonoBehaviour
     //Call other classes
     public ShootingScript ss;
     public GameManager gm;
-    public PlayerController pc;
 
     //enemey waypoints array
     public GameObject[] waypoints;
@@ -23,6 +22,9 @@ public class BadGuyScript : MonoBehaviour
 
     //enemy speed random
     public float speed;
+
+    //enemey
+    public GameObject badGuy;
 
     //when looking at player chase
     public GameObject Player;
@@ -49,6 +51,7 @@ public class BadGuyScript : MonoBehaviour
 
     void Update()
     {
+
         //enemy health bar
         badGuyHealth.fillAmount = badGuyHealthNumber / 100f;
 
@@ -71,8 +74,10 @@ public class BadGuyScript : MonoBehaviour
                     current = 0;
                 }
             }
+            badGuy.transform.LookAt(waypoints[current].transform);
             //go to waypoint
             transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed);
+            
         }
         //Check line of sight
         if (Physics.Raycast(transform.position, (forward), out hit))
@@ -113,7 +118,7 @@ public class BadGuyScript : MonoBehaviour
             if (badGuyHealthNumber <= 0)
             {
                 gameObject.SetActive(false);
-                gm.deathCount += 1;
+                gm.deathCount -= 1;
             }
         }
 

@@ -16,14 +16,20 @@ public class GameManager : MonoBehaviour
     //damage
     public int currentDamage;
 
-    //calling gameobjects
-    public Image crosshair;
+    //calling UI scenes
+    public GameObject InGameUI;
+    public GameObject RoundWonUI;
+    public GameObject NextLevelUI;
+
+    //stop shooting
+    public bool allowFireFinal = true;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        //starting menu
+        //set deathcount to new number
+        deathCount = 6;
 
 
     }
@@ -33,18 +39,44 @@ public class GameManager : MonoBehaviour
     {
 
         //Death count, when above number of enemies on floor give loot
-        deathCountText.text = deathCount.ToString("0") + "/6 Dead";
-        if (deathCount >= 6)
+        deathCountText.text = deathCount.ToString("0") + " Remaining";
+        if (deathCount <= 5)
         {
+            //Display weapon
 
-            ld.switchGuns();
+
+            //let camera free to fire
+            Cursor.lockState = CursorLockMode.None;
+
+            //switch ui
+            InGameUI.SetActive(false);
+            RoundWonUI.SetActive(true);
+
+            //stop shooting
+            allowFireFinal = false; 
+            
 
         }
 
     }
+    //take the loot
     public void TakeActionLoot()
     {
-         
+        //switch UI
+        RoundWonUI.SetActive(false);
+        NextLevelUI.SetActive(true);
+
+        //switch to random gun
+        ld.switchGuns();
+        
+
+    }
+    //don't take loot
+    public void TakeActionLootDeny()
+    {
+        //switch UI
+        RoundWonUI.SetActive(false);
+        NextLevelUI.SetActive(true);
     }
     public void TakeActionLevel()
     {

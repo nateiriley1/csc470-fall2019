@@ -17,8 +17,8 @@ public class ShootingScript : MonoBehaviour
     public ParticleSystem effectOfGun;
 
     //allow fire
-    private bool allowFire = true;
-    private bool allowFireBadGuy = true;
+    public bool allowFire = true;
+    public bool allowFireBadGuy = true;
 
     //Who is shooting
     public GameObject Character;
@@ -47,7 +47,7 @@ public class ShootingScript : MonoBehaviour
             if (shotgun)
             {
                 gm.currentDamage = shotgunDamage;
-                if (allowFire == true && Input.GetKey(KeyCode.Mouse0))
+                if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
 
                     effectOfGun.Emit(1);
@@ -78,7 +78,7 @@ public class ShootingScript : MonoBehaviour
                 }
             }
             //most guns
-            else if (allowFire == true && Input.GetKey(KeyCode.Mouse0))
+            else if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
             {
                 gm.currentDamage = pistolDamage;
                 effectOfGun.Emit(1);
@@ -100,7 +100,7 @@ public class ShootingScript : MonoBehaviour
         //Check if bad guy
         if (BadGuy)
         {
-            if (BGS.huntNow == true && allowFireBadGuy == true)
+            if (gm.allowFireFinal == true && BGS.huntNow == true && allowFireBadGuy == true)
             {
                 
                 effectOfGun.Emit(1);
