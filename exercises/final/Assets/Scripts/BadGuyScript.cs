@@ -25,7 +25,6 @@ public class BadGuyScript : MonoBehaviour
     public float speed;
 
     //when looking at player chase
-    hunt sight;
     public GameObject Player;
     public bool huntNow = false;
     private bool doItNow = false;

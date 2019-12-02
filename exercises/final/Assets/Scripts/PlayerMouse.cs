@@ -36,7 +36,7 @@ public class PlayerMouse : MonoBehaviour
         //lock mouse to 90 on each y direction
         mouseLook.y = Mathf.Clamp(mouseLook.y, -90f, 90f);
 
-        //move mouse
+        //move mouse 
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
 

@@ -16,9 +16,15 @@ public class GameManager : MonoBehaviour
     //damage
     public int currentDamage;
 
+    //calling gameobjects
+    public Image crosshair;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        //starting menu
+
 
     }
 
@@ -36,5 +42,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void TakeActionLoot()
+    {
+         
+    }
+    public void TakeActionLevel()
+    {
 
+    }
 }
