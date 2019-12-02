@@ -7,13 +7,11 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     //calling other scripts
+    public LootDrops ld;
 
     //count dead enemy and display number
     public int deathCount = 0;
     public Text deathCountText;
-
-    //when all enemy's are dead give loot
-    public bool lootDrop = false;
 
     //damage
     public int currentDamage;
@@ -30,10 +28,10 @@ public class GameManager : MonoBehaviour
 
         //Death count, when above number of enemies on floor give loot
         deathCountText.text = deathCount.ToString("0") + "/6 Dead";
-        if (deathCount >= 1)
+        if (deathCount >= 6)
         {
 
-            lootDrop = true;
+            ld.switchGuns();
 
         }
 
