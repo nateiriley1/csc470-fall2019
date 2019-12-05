@@ -10,6 +10,8 @@ TagManager:
   - gun
   - loot
   - EnemyBullet
+  - LookAt
+  - GM
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     //calling other scripts
     public LootDrops ld;
+    public BadGuyScript bgs;
 
     //count dead enemy and display number
     public int deathCount = 0;
@@ -34,8 +35,9 @@ public class GameManager : MonoBehaviour
     public GameObject shotgun;
     public GameObject m4;
 
-    //diable enemy's
-    public GameObject enemies;
+    //count number of enemies
+    GameObject[] enemyArray;
+    public int enemyCount;
 
 
     //stop shooting
@@ -48,8 +50,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        //set deathcount to new number
-        deathCount = 6;
+        //array of enemies
+        enemyArray = GameObject.FindGameObjectsWithTag("BadGuy");
+
+        //count the array
+        enemyCount = enemyArray.Length;
 
 
     }
@@ -58,12 +63,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Death count, when above number of enemies on floor give loot
-        deathCountText.text = deathCount.ToString("0") + " Remaining";
+        deathCountText.text = enemyCount.ToString("0") + " Remaining";
         if (isDead == true)
         {
-            //disable enemies
-            enemies.SetActive(false);
-
+            
             //let camera free to fire
             Cursor.lockState = CursorLockMode.None;
             
@@ -79,7 +82,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void roundEnd()
-    { 
+    {
 
         //load random weapon
         ld.randomDrop();
@@ -133,7 +136,7 @@ public class GameManager : MonoBehaviour
     }
     public void TakeActionLevel()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     //Restart Game

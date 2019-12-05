@@ -27,7 +27,6 @@ public class BadGuyScript : MonoBehaviour
     public GameObject badGuy;
 
     //when looking at player chase
-    public GameObject Player;
     public bool huntNow = false;
     private bool doItNow = false;
 
@@ -39,7 +38,12 @@ public class BadGuyScript : MonoBehaviour
     public Image badGuyHealth;
     public GameObject backImage;
 
+    //gun holder
     public GameObject gunHolder;
+
+    //from ss
+    public ParticleSystem effectOfGun;
+
 
 
     void Start()
@@ -47,6 +51,7 @@ public class BadGuyScript : MonoBehaviour
 
         //random enemy waypoint speed
         speed = Random.Range(5, 10);
+
     }
 
     void Update()
@@ -100,8 +105,7 @@ public class BadGuyScript : MonoBehaviour
             pursue();
         }
 
-        //Get charater Weapon
-        
+
 
 
     }
@@ -118,8 +122,8 @@ public class BadGuyScript : MonoBehaviour
             if (badGuyHealthNumber <= 0)
             {
                 gameObject.SetActive(false);
-                gm.deathCount -= 1;
-                if (gm.deathCount <= 5)
+                gm.enemyCount -= 1;
+                if (gm.enemyCount <= 0)
                 {
                     gm.roundEnd();
                 }
@@ -136,9 +140,11 @@ public class BadGuyScript : MonoBehaviour
     //chase the player
     void pursue()
     {
+        //when finding player
+        var target = GameObject.FindWithTag("LookAt");
         huntNow = true;
         transform.Translate(Vector3.forward * Time.deltaTime);
-        gameObject.transform.LookAt(Player.transform, Vector3.up);
+        gameObject.transform.LookAt(target.transform, Vector3.up);
 
     }
     //Check if can chase
@@ -148,5 +154,5 @@ public class BadGuyScript : MonoBehaviour
         doItNow = true;
 
     }
-
+    //enemy firerate
 }

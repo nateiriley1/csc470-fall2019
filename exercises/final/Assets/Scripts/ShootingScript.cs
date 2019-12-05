@@ -18,7 +18,6 @@ public class ShootingScript : MonoBehaviour
 
     //allow fire
     public bool allowFire = true;
-    public bool allowFireBadGuy = true;
 
     //Who is shooting
     public GameObject Character;
@@ -37,12 +36,11 @@ public class ShootingScript : MonoBehaviour
     public int m4Damage = 10;
 
     //Enemy Damage
-    public GameObject EnemyBullet;
     public int enemyDamage = 20;
 
     void Start()
     {
-        
+        gm = gameObject.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -132,29 +130,6 @@ public class ShootingScript : MonoBehaviour
                 }
             }
         }
-        //Check if bad guy
-        if (BadGuy)
-        {
-            if (gm.allowFireFinal == true && BGS.huntNow == true && allowFireBadGuy == true)
-            {
-                
-                effectOfGun.Emit(1);
-                StartCoroutine(RandomFire());
-                GameObject Temporary_Bullet_Handler;
-                Temporary_Bullet_Handler = Instantiate(EnemyBullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
-
-
-                Rigidbody Temporary_RigidBody;
-                Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
-
-
-                Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
-
-                Destroy(Temporary_Bullet_Handler, 10.0f);
-
-                
-            }
-        }
     }
 
     //pistol firerate
@@ -179,15 +154,6 @@ public class ShootingScript : MonoBehaviour
         allowFire = false;
         yield return new WaitForSeconds(.2f);
         allowFire = true;
-
-    }
-
-    //enemy firerate
-    IEnumerator RandomFire()
-    {
-        allowFireBadGuy = false;
-        yield return new WaitForSeconds((Random.Range(1f, 5f)));
-        allowFireBadGuy = true;
 
     }
 
