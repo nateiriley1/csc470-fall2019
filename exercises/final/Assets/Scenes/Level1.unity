@@ -511,7 +511,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gm
       value: 
-      objectReference: {fileID: 959495096}
+      objectReference: {fileID: 0}
     - target: {fileID: 9016101930992440502, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
       propertyPath: gunHolder
@@ -2149,11 +2149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgs: {fileID: 1348620093}
-  Bullet_Emitter: {fileID: 0}
-  EnemyBullet: {fileID: 0}
+  Bullet_Emitter: {fileID: 1486130530}
+  EnemyBullet: {fileID: 1908737710651803075, guid: a65ac3b1d6f0fb94890ca6a3e552d1bb,
+    type: 3}
   Bullet_Forward_Force: 500
   allowFireBadGuy: 1
-  effectOfGun: {fileID: 0}
+  effectOfGun: {fileID: 478173603}
 --- !u!1 &106195627 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 1ad1369e6d656204cae8af3883fcde91,
@@ -2279,6 +2280,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2021223348}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &108890727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9016101930992440502, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 2021223348}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108890726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b51529aadf84d44e837230e494b047e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &114617131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6573,6 +6586,12 @@ Transform:
   m_Father: {fileID: 1516109073}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &351589200 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9016101931001296953, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 2021223348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &352173516
 GameObject:
   m_ObjectHideFlags: 0
@@ -6830,12 +6849,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8554653d72032a54a8cbb6258ae45a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgs: {fileID: 0}
-  Bullet_Emitter: {fileID: 0}
-  EnemyBullet: {fileID: 0}
+  bgs: {fileID: 108890727}
+  Bullet_Emitter: {fileID: 1470179584}
+  EnemyBullet: {fileID: 1908737710651803075, guid: a65ac3b1d6f0fb94890ca6a3e552d1bb,
+    type: 3}
   Bullet_Forward_Force: 500
   allowFireBadGuy: 1
-  effectOfGun: {fileID: 0}
+  effectOfGun: {fileID: 351589200}
 --- !u!1001 &375239887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8903,6 +8923,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 74.600334, y: 52.144203, z: 51.818657}
   m_Center: {x: -5.370388, y: 24.435062, z: 10.660191}
+--- !u!198 &478173603 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9016101931001296953, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 35611345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &481798299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 1ad1369e6d656204cae8af3883fcde91,
@@ -9317,7 +9343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ebc1179b95f504889f0bd49bd4802b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGS: {fileID: 0}
   gm: {fileID: 959495096}
   Bullet_Emitter: {fileID: 1238574969}
   Bullet_Emitter_Shotgun: {fileID: 0}
@@ -9327,7 +9352,6 @@ MonoBehaviour:
   effectOfGun: {fileID: 815041291}
   allowFire: 1
   Character: {fileID: 1870013744}
-  BadGuy: {fileID: 0}
   pistol: {fileID: 501553383}
   pistolDamage: 20
   shotgun: {fileID: 0}
@@ -9950,6 +9974,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1544856433}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &550388335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9016101930992440502, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1544856433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550388334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b51529aadf84d44e837230e494b047e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &553776610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12047,6 +12083,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 74.600334, y: 52.144203, z: 51.818657}
   m_Center: {x: -5.370388, y: 24.435062, z: 10.660191}
+--- !u!1 &656354239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9016101930275997741, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1855059016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &656580076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21851,6 +21893,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad1369e6d656204cae8af3883fcde91, type: 3}
+--- !u!1 &919599060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9016101930275997741, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1544856433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &920916384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22465,7 +22513,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ld: {fileID: 216407042}
-  bgs: {fileID: 0}
   deathCount: 0
   deathCountText: {fileID: 1856881223}
   lootName: {fileID: 2145144298}
@@ -25945,12 +25992,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8554653d72032a54a8cbb6258ae45a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgs: {fileID: 0}
-  Bullet_Emitter: {fileID: 0}
-  EnemyBullet: {fileID: 0}
+  bgs: {fileID: 1278515159}
+  Bullet_Emitter: {fileID: 656354239}
+  EnemyBullet: {fileID: 1908737710651803075, guid: a65ac3b1d6f0fb94890ca6a3e552d1bb,
+    type: 3}
   Bullet_Forward_Force: 500
   allowFireBadGuy: 1
-  effectOfGun: {fileID: 0}
+  effectOfGun: {fileID: 1760899207}
 --- !u!1001 &1115830255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26549,6 +26597,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BadGuy5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9016101930992440496, guid: c7309cd6ce882144e89b7d9f2c680317,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016101930992440500, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
@@ -27313,15 +27366,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1204867759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8554653d72032a54a8cbb6258ae45a7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 87ebc1179b95f504889f0bd49bd4802b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgs: {fileID: 0}
+  gm: {fileID: 0}
   Bullet_Emitter: {fileID: 0}
-  EnemyBullet: {fileID: 0}
+  Bullet_Emitter_Shotgun: {fileID: 0}
+  Bullet: {fileID: 0}
+  Bullet2: {fileID: 0}
   Bullet_Forward_Force: 500
-  allowFireBadGuy: 1
   effectOfGun: {fileID: 0}
+  allowFire: 1
+  Character: {fileID: 0}
+  pistol: {fileID: 501553383}
+  pistolDamage: 20
+  shotgun: {fileID: 1560777179}
+  shotgunDamage: 25
+  m4: {fileID: 1515112116}
+  m4Damage: 10
+  enemyDamage: 20
 --- !u!1001 &1208103214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28830,6 +28893,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1855059016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1278515159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9016101930992440502, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1855059016}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278515158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b51529aadf84d44e837230e494b047e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287662159
 GameObject:
   m_ObjectHideFlags: 0
@@ -31850,6 +31925,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad1369e6d656204cae8af3883fcde91, type: 3}
+--- !u!198 &1431917181 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9016101931001296953, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1544856433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1439256817 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 1ad1369e6d656204cae8af3883fcde91,
@@ -32362,6 +32443,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 74.600334, y: 52.144203, z: 51.818657}
   m_Center: {x: -5.370388, y: 24.435062, z: 10.660191}
+--- !u!1 &1470179584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9016101930275997741, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 2021223348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475100752 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 1ad1369e6d656204cae8af3883fcde91,
@@ -32481,6 +32568,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad1369e6d656204cae8af3883fcde91, type: 3}
+--- !u!1 &1486130530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9016101930275997741, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 35611345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1486612444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33119,7 +33212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ebc1179b95f504889f0bd49bd4802b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGS: {fileID: 0}
   gm: {fileID: 959495096}
   Bullet_Emitter: {fileID: 543249198}
   Bullet_Emitter_Shotgun: {fileID: 0}
@@ -33129,7 +33221,6 @@ MonoBehaviour:
   effectOfGun: {fileID: 1594635109}
   allowFire: 1
   Character: {fileID: 1870013744}
-  BadGuy: {fileID: 0}
   pistol: {fileID: 0}
   pistolDamage: 20
   shotgun: {fileID: 0}
@@ -33920,7 +34011,7 @@ PrefabInstance:
     - target: {fileID: 9016101930992440496, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016101930992440500, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
@@ -34617,7 +34708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ebc1179b95f504889f0bd49bd4802b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGS: {fileID: 0}
   gm: {fileID: 959495096}
   Bullet_Emitter: {fileID: 306697324}
   Bullet_Emitter_Shotgun: {fileID: 939196693}
@@ -34627,7 +34717,6 @@ MonoBehaviour:
   effectOfGun: {fileID: 819684217}
   allowFire: 1
   Character: {fileID: 1870013744}
-  BadGuy: {fileID: 0}
   pistol: {fileID: 0}
   pistolDamage: 20
   shotgun: {fileID: 1560777179}
@@ -37775,6 +37864,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad1369e6d656204cae8af3883fcde91, type: 3}
+--- !u!198 &1760899207 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 9016101931001296953, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1855059016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1766188028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 1ad1369e6d656204cae8af3883fcde91,
@@ -39438,7 +39533,7 @@ PrefabInstance:
     - target: {fileID: 9016101930992440496, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016101930992440500, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
@@ -40458,6 +40553,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 74.600334, y: 52.144203, z: 51.818657}
   m_Center: {x: -5.370388, y: 24.435062, z: 10.660191}
+--- !u!1 &1888374983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9016101931150024806, guid: c7309cd6ce882144e89b7d9f2c680317,
+    type: 3}
+  m_PrefabInstance: {fileID: 1544856433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1888374985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888374983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8554653d72032a54a8cbb6258ae45a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgs: {fileID: 550388335}
+  Bullet_Emitter: {fileID: 919599060}
+  EnemyBullet: {fileID: 1908737710651803075, guid: a65ac3b1d6f0fb94890ca6a3e552d1bb,
+    type: 3}
+  Bullet_Forward_Force: 500
+  allowFireBadGuy: 1
+  effectOfGun: {fileID: 1431917181}
 --- !u!1 &1891155206
 GameObject:
   m_ObjectHideFlags: 0
@@ -42283,7 +42403,7 @@ PrefabInstance:
     - target: {fileID: 9016101930992440496, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016101930992440500, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
@@ -44805,7 +44925,7 @@ PrefabInstance:
     - target: {fileID: 9016101930992440496, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016101930992440500, guid: c7309cd6ce882144e89b7d9f2c680317,
         type: 3}

@@ -41,13 +41,16 @@ public class BadGuyScript : MonoBehaviour
     //gun holder
     public GameObject gunHolder;
 
-    //from ss
-    public ParticleSystem effectOfGun;
+    
+
 
 
 
     void Start()
     {
+        GameObject gmobj = GameObject.Find("GameManager");
+        //reference GameManager
+        gm = gmobj.GetComponent<GameManager>();
 
         //random enemy waypoint speed
         speed = Random.Range(5, 10);

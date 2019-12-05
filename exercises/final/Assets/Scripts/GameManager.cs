@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     //calling other scripts
     public LootDrops ld;
-    public BadGuyScript bgs;
 
     //count dead enemy and display number
     public int deathCount = 0;
@@ -136,14 +135,19 @@ public class GameManager : MonoBehaviour
     }
     public void TakeActionLevel()
     {
+        allowFireFinal = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        InGameUI.SetActive(true);
+        RoundWonUI.SetActive(false);
+        NextLevelUI.SetActive(false);
+        DeadScreen.SetActive(false);
     }
 
     //Restart Game
     public void TakeActionRestart()
     {
 
-        SceneManager.LoadScene("Level1", LoadSceneMode.Additive);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex * 0);
 
     }
 

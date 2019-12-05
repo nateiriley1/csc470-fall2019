@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShootingScript : MonoBehaviour
 {
     //Call Other Scripts
-    public BadGuyScript BGS;
     public GameManager gm;
 
     //gun and bullet effects
@@ -21,7 +20,6 @@ public class ShootingScript : MonoBehaviour
 
     //Who is shooting
     public GameObject Character;
-    public GameObject BadGuy;
 
     //pistol
     public GameObject pistol;
@@ -40,7 +38,9 @@ public class ShootingScript : MonoBehaviour
 
     void Start()
     {
-        gm = gameObject.GetComponent<GameManager>();
+
+
+
     }
 
     // Update is called once per frame
@@ -90,7 +90,7 @@ public class ShootingScript : MonoBehaviour
                 gm.currentDamage = pistolDamage;
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
-                    gm.currentDamage = pistolDamage;
+                    
                     effectOfGun.Emit(1);
                     StartCoroutine(WaitASecondPistol());
 
