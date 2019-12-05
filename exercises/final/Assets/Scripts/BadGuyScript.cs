@@ -119,7 +119,16 @@ public class BadGuyScript : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 gm.deathCount -= 1;
+                if (gm.deathCount <= 5)
+                {
+                    gm.roundEnd();
+                }
             }
+        }
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            //set bullet false
+            other.gameObject.SetActive(false);
         }
 
     }

@@ -9,6 +9,7 @@ TagManager:
   - Room
   - gun
   - loot
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

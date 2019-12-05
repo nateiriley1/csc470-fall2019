@@ -13,7 +13,7 @@ public class ShootingScript : MonoBehaviour
     public GameObject Bullet_Emitter_Shotgun;
     public GameObject Bullet;
     public GameObject Bullet2;
-    public float Bullet_Forward_Force;
+    public float Bullet_Forward_Force = 500f;
     public ParticleSystem effectOfGun;
 
     //allow fire
@@ -31,7 +31,15 @@ public class ShootingScript : MonoBehaviour
     //shotgun
     public GameObject shotgun;
     public int shotgunDamage = 25;
-    
+
+    //m4
+    public GameObject m4;
+    public int m4Damage = 10;
+
+    //Enemy Damage
+    public GameObject EnemyBullet;
+    public int enemyDamage = 20;
+
     void Start()
     {
         
@@ -77,24 +85,51 @@ public class ShootingScript : MonoBehaviour
 
                 }
             }
-            //most guns
-            else if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
+            //pistol
+            
+            if (pistol)
             {
                 gm.currentDamage = pistolDamage;
-                effectOfGun.Emit(1);
-                StartCoroutine(WaitASecond());
+                if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
+                {
+                    gm.currentDamage = pistolDamage;
+                    effectOfGun.Emit(1);
+                    StartCoroutine(WaitASecondPistol());
 
-                GameObject Temporary_Bullet_Handler;
-                Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+                    GameObject Temporary_Bullet_Handler;
+                    Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
-                Rigidbody Temporary_RigidBody;
-                Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+                    Rigidbody Temporary_RigidBody;
+                    Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
 
 
-                Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
+                    Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
 
-                Destroy(Temporary_Bullet_Handler, 10.0f);
+                    Destroy(Temporary_Bullet_Handler, 10.0f);
 
+                }
+            }
+            if (m4)
+            {
+                gm.currentDamage = m4Damage;
+                if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
+                {
+                    gm.currentDamage = pistolDamage;
+                    effectOfGun.Emit(1);
+                    StartCoroutine(WaitASecondM4());
+
+                    GameObject Temporary_Bullet_Handler;
+                    Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+
+                    Rigidbody Temporary_RigidBody;
+                    Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+
+
+                    Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
+
+                    Destroy(Temporary_Bullet_Handler, 10.0f);
+
+                }
             }
         }
         //Check if bad guy
@@ -106,7 +141,7 @@ public class ShootingScript : MonoBehaviour
                 effectOfGun.Emit(1);
                 StartCoroutine(RandomFire());
                 GameObject Temporary_Bullet_Handler;
-                Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+                Temporary_Bullet_Handler = Instantiate(EnemyBullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
 
                 Rigidbody Temporary_RigidBody;
@@ -123,7 +158,7 @@ public class ShootingScript : MonoBehaviour
     }
 
     //pistol firerate
-    IEnumerator WaitASecond()
+    IEnumerator WaitASecondPistol()
     {
         allowFire = false;
         yield return new WaitForSeconds(1);
@@ -139,12 +174,19 @@ public class ShootingScript : MonoBehaviour
         allowFire = true;
 
     }
+    IEnumerator WaitASecondM4()
+    {
+        allowFire = false;
+        yield return new WaitForSeconds(.2f);
+        allowFire = true;
+
+    }
 
     //enemy firerate
     IEnumerator RandomFire()
     {
         allowFireBadGuy = false;
-        yield return new WaitForSeconds((Random.Range(2f, 5f)));
+        yield return new WaitForSeconds((Random.Range(1f, 5f)));
         allowFireBadGuy = true;
 
     }

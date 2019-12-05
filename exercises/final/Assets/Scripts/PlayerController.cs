@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     //Calling Other Scripts
     public ShootingScript ss;
+    public GameManager gm;
 
     //movement
     public float speed = 10.0f;
@@ -20,9 +21,10 @@ public class PlayerController : MonoBehaviour
 
     //player health
     public float currentHealth = 100f;
-    //public float maxHealth = 100;
+    public float maxHealth = 100f;
     public Image playerHealth;
     public GameObject backImage;
+    public Text HealthBarNumbers;
 
     //current Weapon
     public GameObject gunHolder;
@@ -41,7 +43,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //health bar
-        playerHealth.fillAmount = currentHealth / 100f;
+        playerHealth.fillAmount = currentHealth / maxHealth;
+
+        //health bar text
+        HealthBarNumbers.text = currentHealth.ToString("0") + "/" + maxHealth.ToString("0");
 
         //movement
         float translation = Input.GetAxis("Vertical") * speed;
@@ -79,24 +84,18 @@ public class PlayerController : MonoBehaviour
     {
 
         //Bullet Collider
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("EnemyBullet"))
         {
             //set bullet false
             other.gameObject.SetActive(false);
             //shotgun
-            if (ss.shotgun)
-            {
-                currentHealth = currentHealth - ss.shotgunDamage;
-            }
-            //pistol
-            if (ss.pistol)
-            {
-                currentHealth = currentHealth - ss.pistolDamage;
-            }
+           
+            currentHealth -= ss.enemyDamage;
+            
             //Check if dead
             if (currentHealth <= 0)
             {
-                gameObject.SetActive(false);
+                gm.isDead = true;
             }
         }
 
