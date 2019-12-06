@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject RoundWonUI;
     public GameObject NextLevelUI;
     public GameObject DeadScreen;
+    public GameObject OptionsMenu;
+
 
     //calling cameras
     public GameObject Character;
@@ -38,12 +40,16 @@ public class GameManager : MonoBehaviour
     GameObject[] enemyArray;
     public int enemyCount;
 
-
     //stop shooting
     public bool allowFireFinal = true;
 
+    //pause actions
+    public bool pause = false;
+    public bool pauseLeave = false;
+
     //check if player died
     public bool isDead = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,31 +61,58 @@ public class GameManager : MonoBehaviour
         //count the array
         enemyCount = enemyArray.Length;
 
-
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //Death count, when above number of enemies on floor give loot
         deathCountText.text = enemyCount.ToString("0") + " Remaining";
         if (isDead == true)
         {
-            
+
             //let camera free to fire
             Cursor.lockState = CursorLockMode.None;
-            
+
             //stop all shooting
             allowFireFinal = false;
-            
+
             //switch to death screen
             InGameUI.SetActive(false);
             DeadScreen.SetActive(true);
 
         }
+        if (Input.GetKeyDown("escape") && pause == false)
+        {
 
+            //switch ui
+            OptionsMenu.SetActive(true);
+            InGameUI.SetActive(false);
+            
+            //pause switch
+            allowFireFinal = false;
+            pause = true;
+
+            //pause leave
+            StartCoroutine(PauseLeave());
+        }
+        if (pauseLeave == true && Input.GetKeyDown("escape"))
+        {
+
+            //switch ui
+            InGameUI.SetActive(true);
+            OptionsMenu.SetActive(false);
+
+            //switch back pauses
+            allowFireFinal = true;
+            pause = false;
+
+            //pause leave switched off
+            pauseLeave = false;
+            
+        }
     }
-
     public void roundEnd()
     {
 
@@ -151,9 +184,33 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void TakeActionBack()
+    {
+        
+        //switch ui
+        InGameUI.SetActive(true);
+        OptionsMenu.SetActive(false);
+
+        //switch back pauses
+        allowFireFinal = true;
+        pause = false;
+
+        //pause leave switched off
+        pauseLeave = false;
+    }
+
     //Quit Level
     public void TakeActionQuit()
     {
         Application.Quit();
+    }
+
+    IEnumerator PauseLeave()
+    {
+        // wait a second and then ask for escape
+        pauseLeave = false;
+        yield return new WaitForSeconds(0.2f);
+        pauseLeave = true;
+
     }
 }

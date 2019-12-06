@@ -32,23 +32,20 @@ public class BadGuyScript : MonoBehaviour
 
     //enemy health
     public float badGuyHealthNumber = 100f;
-    //private int maxHealth = 100;
-
-    //enemy health bar
     public Image badGuyHealth;
     public GameObject backImage;
 
     //gun holder
     public GameObject gunHolder;
 
-    
-
-
-
+    //pause actions
+    public int binary_pause_choice = 1;
 
     void Start()
     {
-        GameObject gmobj = GameObject.Find("GameManager");
+        //Call the Gameobject
+        GameObject gmobj = GameObject.FindWithTag("GM");
+        
         //reference GameManager
         gm = gmobj.GetComponent<GameManager>();
 
@@ -60,6 +57,20 @@ public class BadGuyScript : MonoBehaviour
     void Update()
     {
 
+        //Change forward speed for pause
+        if (gm.pause == true)
+        {
+
+            binary_pause_choice = 0;
+
+        }else
+        {
+
+            binary_pause_choice = 1;
+
+        }
+
+
         //enemy health bar
         badGuyHealth.fillAmount = badGuyHealthNumber / 100f;
 
@@ -70,7 +81,7 @@ public class BadGuyScript : MonoBehaviour
         Debug.DrawRay(transform.position, forward, Color.green);
         
         //check if player is there, if not then follow waypoints
-        if (doItNow == false)
+        if (doItNow == false && gm.pause == false)
         {
             //walk to closest waypoint
             if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
@@ -107,10 +118,6 @@ public class BadGuyScript : MonoBehaviour
         {
             pursue();
         }
-
-
-
-
     }
     void OnTriggerEnter(Collider other)
     {
@@ -146,7 +153,7 @@ public class BadGuyScript : MonoBehaviour
         //when finding player
         var target = GameObject.FindWithTag("LookAt");
         huntNow = true;
-        transform.Translate(Vector3.forward * Time.deltaTime);
+        transform.Translate(Vector3.forward * Time.deltaTime * binary_pause_choice);
         gameObject.transform.LookAt(target.transform, Vector3.up);
 
     }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyShootingScript : MonoBehaviour
 {
+    //calling other scripts
     public BadGuyScript bgs;
+    public GameManager gm;
 
     //Enemy Damage
     public GameObject Bullet_Emitter;
@@ -17,7 +19,11 @@ public class EnemyShootingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Call the Gameobject
+        GameObject gmobj = GameObject.FindWithTag("GM");
+
+        //reference GameManager
+        gm = gmobj.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,7 +31,7 @@ public class EnemyShootingScript : MonoBehaviour
     {
 
         //Check if bad guy
-        if (bgs.huntNow == true && allowFireBadGuy == true)
+        if (bgs.huntNow == true && allowFireBadGuy == true && gm.allowFireFinal == true)
         {
 
             effectOfGun.Emit(1);

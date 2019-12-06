@@ -35,13 +35,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
 
-        //mouse on screen
-        Cursor.lockState = CursorLockMode.Locked;
-   
     }
 
     void Update()
     {
+        if (gm.pause == false)
+        {
+            //mouse on screen
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            //mouse on screen
+            Cursor.lockState = CursorLockMode.None;
+        }
+
         //health bar
         playerHealth.fillAmount = currentHealth / maxHealth;
 
@@ -57,18 +65,13 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(straffe, 0, translation);
         rb.AddForce(movement);
 
-        //escape from mouse lock
-        if (Input.GetKeyDown("escape"))
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        
 
         //check to jump
         if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-
     }
 
     //Check to jump

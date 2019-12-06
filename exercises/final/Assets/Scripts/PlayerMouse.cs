@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerMouse : MonoBehaviour
 {
+    //calling other classes
+    public MainMenu mm;
+
     //mouse sens
     Vector2 mouseLook;
     Vector2 smoothV;
-    public float sensitivity = 5.0f;
+    public float sensitivity = 1.0f;
     public float smoothing = 2.0f;
 
     //reference character
@@ -23,6 +26,10 @@ public class PlayerMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
+        sensitivity = mm.finalSens / 2;
+        
 
         //get mouse movement
         var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
