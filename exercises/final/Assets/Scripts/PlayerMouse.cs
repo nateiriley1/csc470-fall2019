@@ -28,7 +28,7 @@ public class PlayerMouse : MonoBehaviour
     {
         
         
-        sensitivity = mm.finalSens / 2;
+        sensitivity = (mm.finalSens / 2) + 0.01f;
         
 
         //get mouse movement

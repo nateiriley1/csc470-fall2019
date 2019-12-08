@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     //calling other scripts
     public LootDrops ld;
+    public PlayerController pc;
 
     //count dead enemy and display number
     public int deathCount = 0;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     //display weapons
     public GameObject shotgun;
     public GameObject m4;
+    public GameObject rpg;
 
     //count number of enemies
     GameObject[] enemyArray;
@@ -49,68 +51,84 @@ public class GameManager : MonoBehaviour
 
     //check if player died
     public bool isDead = false;
+    public bool restart = false;
+
+    //check button clicked
+    public bool hitButton = false;
+
+    //level count
+    public int levelCount = 1;
+    public Text level;
+
+    //enemyShooting speed
+    public float lowRange = 1;
+    public float highRange = 5;
+
+    //enemy health increase
+    public float badGuyMaxHealth;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-        //array of enemies
-        enemyArray = GameObject.FindGameObjectsWithTag("BadGuy");
-
-        //count the array
-        enemyCount = enemyArray.Length;
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //Death count, when above number of enemies on floor give loot
-        deathCountText.text = enemyCount.ToString("0") + " Remaining";
-        if (isDead == true)
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName != "Menu")
         {
+            level.text = "Level " + levelCount.ToString("0");
+            lowRange = 1 - (levelCount * 0.09f);
+            highRange = (6 - (levelCount / 5)) - (levelCount * .2f);
 
-            //let camera free to fire
-            Cursor.lockState = CursorLockMode.None;
 
-            //stop all shooting
-            allowFireFinal = false;
+            //array of enemies
+            enemyArray = GameObject.FindGameObjectsWithTag("BadGuy");
 
-            //switch to death screen
-            InGameUI.SetActive(false);
-            DeadScreen.SetActive(true);
+            //count the array
+            enemyCount = enemyArray.Length;
 
-        }
-        if (Input.GetKeyDown("escape") && pause == false)
-        {
+            //Death count, when above number of enemies on floor give loot
+            deathCountText.text = enemyCount.ToString("0") + " Remaining";
+            if (isDead == true && restart == false)
+            {
+                pause = true;
 
-            //switch ui
-            OptionsMenu.SetActive(true);
-            InGameUI.SetActive(false);
-            
-            //pause switch
-            allowFireFinal = false;
-            pause = true;
+                //let camera free to fire
+                Cursor.lockState = CursorLockMode.None;
 
-            //pause leave
-            StartCoroutine(PauseLeave());
-        }
-        if (pauseLeave == true && Input.GetKeyDown("escape"))
-        {
+                //stop all shooting
+                allowFireFinal = false;
 
-            //switch ui
-            InGameUI.SetActive(true);
-            OptionsMenu.SetActive(false);
+                //switch to death screen
+                InGameUI.SetActive(false);
+                DeadScreen.SetActive(true);
 
-            //switch back pauses
-            allowFireFinal = true;
-            pause = false;
+            }
+            if (Input.GetKeyDown("escape") && pause == false)
+            {
 
-            //pause leave switched off
-            pauseLeave = false;
-            
+                //switch ui
+                OptionsMenu.SetActive(true);
+                InGameUI.SetActive(false);
+
+                //pause switch
+                allowFireFinal = false;
+                pause = true;
+
+                //pause leave
+                StartCoroutine(PauseLeave());
+            }
+            if (pauseLeave == true && Input.GetKeyDown("escape"))
+            {
+
+                TakeActionBack();
+            }
         }
     }
     public void roundEnd()
@@ -142,45 +160,58 @@ public class GameManager : MonoBehaviour
     //Take the loot
     public void TakeActionLoot()
     {
+        m4.SetActive(false);
+        shotgun.SetActive(false);
+        rpg.SetActive(false);
+        hitButton = false;
+
         //switch UI
         RoundWonUI.SetActive(false);
         NextLevelUI.SetActive(true);
 
-        //switch back cameras so no errors
-        Character.SetActive(true);
-        ItemDisplay.SetActive(false);
+        //move chracter back
+        Character.transform.position = new Vector3(7, 2, -3);
 
         //switch to random gun
-        ld.switchGuns();
-        
+        ld.activateLoot();
+
+
 
     }
     //Don't take loot
     public void TakeActionLootDeny()
     {
+        m4.SetActive(false);
+        shotgun.SetActive(false);
+        hitButton = false;
+
+        //move chracter back
+        Character.transform.position = new Vector3(7, 2, -3);
+
         //switch UI
         RoundWonUI.SetActive(false);
         NextLevelUI.SetActive(true);
 
-        //switch back cameras so no errors
-        Character.SetActive(true);
-        ItemDisplay.SetActive(false);
     }
     public void TakeActionLevel()
     {
-        allowFireFinal = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //switch back cameras so no errors
+        Character.SetActive(true);
+        ItemDisplay.SetActive(false);
         InGameUI.SetActive(true);
         RoundWonUI.SetActive(false);
         NextLevelUI.SetActive(false);
         DeadScreen.SetActive(false);
+        allowFireFinal = true;
+        levelCount += 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     //Restart Game
     public void TakeActionRestart()
     {
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex * 0);
+        restart = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - levelCount);
 
     }
 

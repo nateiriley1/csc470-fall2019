@@ -56,7 +56,7 @@ public class EnemyShootingScript : MonoBehaviour
     IEnumerator RandomFire()
     {
         allowFireBadGuy = false;
-        yield return new WaitForSeconds((Random.Range(1f, 5f)));
+        yield return new WaitForSeconds((Random.Range(gm.lowRange, gm.highRange)));
         allowFireBadGuy = true;
 
     }

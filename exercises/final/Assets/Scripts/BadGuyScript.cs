@@ -31,7 +31,7 @@ public class BadGuyScript : MonoBehaviour
     private bool doItNow = false;
 
     //enemy health
-    public float badGuyHealthNumber = 100f;
+    public float badGuyHealthNumber;
     public Image badGuyHealth;
     public GameObject backImage;
 
@@ -51,6 +51,9 @@ public class BadGuyScript : MonoBehaviour
 
         //random enemy waypoint speed
         speed = Random.Range(5, 10);
+
+        gm.badGuyMaxHealth = 100 + (gm.levelCount - 1) * 50;
+        badGuyHealthNumber = gm.badGuyMaxHealth;
 
     }
 
@@ -72,7 +75,7 @@ public class BadGuyScript : MonoBehaviour
 
 
         //enemy health bar
-        badGuyHealth.fillAmount = badGuyHealthNumber / 100f;
+        badGuyHealth.fillAmount = badGuyHealthNumber / gm.badGuyMaxHealth;
 
         //check for player
         RaycastHit hit;

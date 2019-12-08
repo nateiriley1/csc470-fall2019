@@ -6,6 +6,7 @@ public class ShootingScript : MonoBehaviour
 {
     //Call Other Scripts
     public GameManager gm;
+    public LootDrops ld;
 
     //gun and bullet effects
     public GameObject Bullet_Emitter;
@@ -24,14 +25,22 @@ public class ShootingScript : MonoBehaviour
     //pistol
     public GameObject pistol;
     public int pistolDamage = 20;
+    public float pistolAttackSpeed = 1;
 
     //shotgun
     public GameObject shotgun;
     public int shotgunDamage = 25;
+    public float shotgunAttackSpeed = 2;
 
     //m4
     public GameObject m4;
-    public int m4Damage = 10;
+    public int m4Damage = 15;
+    public float m4AttackSpeed = .1f;
+
+    //rpg
+    public GameObject rpg;
+    public int rpgDamage = 100;
+    public float rpgAttackSpeed = 5;
 
     //Enemy Damage
     public int enemyDamage = 20;
@@ -46,6 +55,9 @@ public class ShootingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
         //Check if Character
         if (Character)
         {
@@ -53,6 +65,7 @@ public class ShootingScript : MonoBehaviour
             if (shotgun)
             {
                 gm.currentDamage = shotgunDamage;
+                shotgunAttackSpeed = shotgunAttackSpeed - (shotgunAttackSpeed * ld.attackSpeedChange);
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
 
@@ -88,6 +101,7 @@ public class ShootingScript : MonoBehaviour
             if (pistol)
             {
                 gm.currentDamage = pistolDamage;
+                pistolAttackSpeed = pistolAttackSpeed - (pistolAttackSpeed * ld.attackSpeedChange);
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
                     
@@ -110,11 +124,33 @@ public class ShootingScript : MonoBehaviour
             if (m4)
             {
                 gm.currentDamage = m4Damage;
+                m4AttackSpeed = m4AttackSpeed - (m4AttackSpeed * ld.attackSpeedChange);
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
-                    gm.currentDamage = pistolDamage;
                     effectOfGun.Emit(1);
                     StartCoroutine(WaitASecondM4());
+
+                    GameObject Temporary_Bullet_Handler;
+                    Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+
+                    Rigidbody Temporary_RigidBody;
+                    Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+
+
+                    Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
+
+                    Destroy(Temporary_Bullet_Handler, 10.0f);
+
+                }
+            }
+            if (rpg)
+            {
+                gm.currentDamage = rpgDamage;
+                rpgAttackSpeed = rpgAttackSpeed - (rpgAttackSpeed * ld.attackSpeedChange);
+                if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
+                {
+                    effectOfGun.Emit(1);
+                    StartCoroutine(WaitASecondrpg());
 
                     GameObject Temporary_Bullet_Handler;
                     Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
@@ -136,7 +172,7 @@ public class ShootingScript : MonoBehaviour
     IEnumerator WaitASecondPistol()
     {
         allowFire = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(pistolAttackSpeed);
         allowFire = true;
        
     }
@@ -145,14 +181,22 @@ public class ShootingScript : MonoBehaviour
     IEnumerator WaitASecondShotgun()
     {
         allowFire = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(shotgunAttackSpeed);
         allowFire = true;
 
     }
+    //M4 firerate
     IEnumerator WaitASecondM4()
     {
         allowFire = false;
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(m4AttackSpeed);
+        allowFire = true;
+    }
+    //rpg firerate
+    IEnumerator WaitASecondrpg()
+    {
+        allowFire = false;
+        yield return new WaitForSeconds(rpgAttackSpeed);
         allowFire = true;
 
     }

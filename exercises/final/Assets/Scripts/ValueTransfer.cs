@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ValueTransfer : MonoBehaviour
 {
     public MainMenu mm;
+    public GameManager gm;
 
     public float volumeFinalValue;
     public float volTrade;
@@ -13,7 +14,7 @@ public class ValueTransfer : MonoBehaviour
     public float senTrade;
     
 
-    private void Start()
+    void Start()
     {
 
         GameObject gmobj = GameObject.FindWithTag("MM");
@@ -21,23 +22,38 @@ public class ValueTransfer : MonoBehaviour
         //reference GameManager
         mm = gmobj.GetComponent<MainMenu>();
 
+
+
     }
     void Update()
     {
+
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName != "Menu")
+        if (sceneName == "Menu")
         {
 
-            volumeFinalValue = volTrade;
-            sensFinalValue = senTrade;
+            volumeFinalValue = mm.finalVolume;
+            sensFinalValue = mm.finalSens;
 
+            volTrade = volumeFinalValue;
+            senTrade = sensFinalValue;
 
         }
+        if (sceneName != "Menu")
+        {
+            GameObject gmobj = GameObject.FindWithTag("GM");
 
-        volumeFinalValue = mm.finalVolume;
+            //reference GameManager
+            gm = gmobj.GetComponent<GameManager>();
 
-        sensFinalValue = mm.finalSens;
+            if (gm.restart == true)
+            {
+                Destroy(this.gameObject);
+                
+            }
+        }
 
     }
 }
