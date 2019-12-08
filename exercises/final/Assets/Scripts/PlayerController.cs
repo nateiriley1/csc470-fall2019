@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         //movement collider
         rb = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             //shotgun
            
-            currentHealth -= ss.enemyDamage;
+            currentHealth -= gm.enemyDamage;
             
             //Check if dead
             if (currentHealth <= 0)

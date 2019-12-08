@@ -42,13 +42,10 @@ public class ShootingScript : MonoBehaviour
     public int rpgDamage = 100;
     public float rpgAttackSpeed = 5;
 
-    //Enemy Damage
-    public int enemyDamage = 20;
-
     void Start()
     {
 
-
+        allowFire = true;
 
     }
 
@@ -56,7 +53,11 @@ public class ShootingScript : MonoBehaviour
     void Update()
     {
 
-
+        if (gm.allowFireTemp == true)
+        {
+            allowFire = true;
+            gm.allowFireTemp = false;
+        }
 
         //Check if Character
         if (Character)
@@ -65,7 +66,11 @@ public class ShootingScript : MonoBehaviour
             if (shotgun)
             {
                 gm.currentDamage = shotgunDamage;
-                shotgunAttackSpeed = shotgunAttackSpeed - (shotgunAttackSpeed * ld.attackSpeedChange);
+                if (ld.tempFireChange == true)
+                {
+                    shotgunAttackSpeed = shotgunAttackSpeed - (shotgunAttackSpeed * ld.attackSpeedChange);
+                    ld.tempFireChange = false;
+                }
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
 
@@ -101,7 +106,11 @@ public class ShootingScript : MonoBehaviour
             if (pistol)
             {
                 gm.currentDamage = pistolDamage;
-                pistolAttackSpeed = pistolAttackSpeed - (pistolAttackSpeed * ld.attackSpeedChange);
+                if (ld.tempFireChange == true)
+                {
+                    pistolAttackSpeed = pistolAttackSpeed - (pistolAttackSpeed * ld.attackSpeedChange);
+                    ld.tempFireChange = false;
+                }
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
                     
@@ -124,7 +133,11 @@ public class ShootingScript : MonoBehaviour
             if (m4)
             {
                 gm.currentDamage = m4Damage;
-                m4AttackSpeed = m4AttackSpeed - (m4AttackSpeed * ld.attackSpeedChange);
+                if (ld.tempFireChange == true)
+                {
+                    m4AttackSpeed = m4AttackSpeed - (m4AttackSpeed * ld.attackSpeedChange);
+                    ld.tempFireChange = false;
+                }
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
                     effectOfGun.Emit(1);
@@ -146,7 +159,11 @@ public class ShootingScript : MonoBehaviour
             if (rpg)
             {
                 gm.currentDamage = rpgDamage;
-                rpgAttackSpeed = rpgAttackSpeed - (rpgAttackSpeed * ld.attackSpeedChange);
+                if (ld.tempFireChange == true)
+                {
+                    rpgAttackSpeed = rpgAttackSpeed - (rpgAttackSpeed * ld.attackSpeedChange);
+                    ld.tempFireChange = false;
+                }
                 if (gm.allowFireFinal == true && allowFire == true && Input.GetKey(KeyCode.Mouse0))
                 {
                     effectOfGun.Emit(1);

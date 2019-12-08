@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public GameObject shotgun;
     public GameObject m4;
     public GameObject rpg;
+    public GameObject attackSpeed;
 
     //count number of enemies
     GameObject[] enemyArray;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     //stop shooting
     public bool allowFireFinal = true;
+    public bool allowFireTemp = false;
 
     //pause actions
     public bool pause = false;
@@ -67,6 +69,9 @@ public class GameManager : MonoBehaviour
     //enemy health increase
     public float badGuyMaxHealth;
 
+    //Enemy Damage
+    public int enemyDamage = 5;
+
 
 
     // Start is called before the first frame update
@@ -80,11 +85,11 @@ public class GameManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName != "Menu")
+        if (sceneName != "Menu" && sceneName != "tempBeginning")
         {
             level.text = "Level " + levelCount.ToString("0");
-            lowRange = 1 - (levelCount * 0.09f);
-            highRange = (6 - (levelCount / 5)) - (levelCount * .2f);
+            lowRange = 1 - (levelCount * 0.1f);
+            highRange = (6 - (levelCount) - (levelCount * .2f));
 
 
             //array of enemies
@@ -134,8 +139,8 @@ public class GameManager : MonoBehaviour
     public void roundEnd()
     {
 
-        //load random weapon
         ld.randomDrop();
+        print(ld.currentLoot.name);
 
         //let camera free to fire
         Cursor.lockState = CursorLockMode.None;
@@ -163,6 +168,7 @@ public class GameManager : MonoBehaviour
         m4.SetActive(false);
         shotgun.SetActive(false);
         rpg.SetActive(false);
+        attackSpeed.SetActive(false);
         hitButton = false;
 
         //switch UI
@@ -183,6 +189,8 @@ public class GameManager : MonoBehaviour
     {
         m4.SetActive(false);
         shotgun.SetActive(false);
+        rpg.SetActive(false);
+        attackSpeed.SetActive(false);
         hitButton = false;
 
         //move chracter back
@@ -195,6 +203,7 @@ public class GameManager : MonoBehaviour
     }
     public void TakeActionLevel()
     {
+        allowFireTemp = true;
         //switch back cameras so no errors
         Character.SetActive(true);
         ItemDisplay.SetActive(false);
@@ -204,6 +213,9 @@ public class GameManager : MonoBehaviour
         DeadScreen.SetActive(false);
         allowFireFinal = true;
         levelCount += 1;
+
+        enemyDamage = enemyDamage + levelCount * 2;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

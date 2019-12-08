@@ -2162,69 +2162,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1042098642
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1042098645}
-  - component: {fileID: 1042098644}
-  - component: {fileID: 1042098643}
-  m_Layer: 0
-  m_Name: SceneTransferObject
-  m_TagString: Transfer
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1042098643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042098642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e97ffac127ec8f46837867d8c18fd41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
---- !u!114 &1042098644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042098642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2306ca1103c0e040b33496364f3a657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mm: {fileID: 0}
-  gm: {fileID: 0}
-  volumeFinalValue: 0
-  volTrade: 0
-  sensFinalValue: 0
-  senTrade: 0
---- !u!4 &1042098645
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042098642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 483, y: 276.28748, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088474952
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,8 +3036,11 @@ MonoBehaviour:
   ItemDisplay: {fileID: 0}
   shotgun: {fileID: 0}
   m4: {fileID: 0}
+  rpg: {fileID: 0}
+  attackSpeed: {fileID: 0}
   enemyCount: 0
   allowFireFinal: 1
+  allowFireTemp: 0
   pause: 0
   pauseLeave: 0
   isDead: 0
@@ -3111,6 +3051,7 @@ MonoBehaviour:
   lowRange: 1
   highRange: 5
   badGuyMaxHealth: 0
+  enemyDamage: 5
 --- !u!4 &2065505177
 Transform:
   m_ObjectHideFlags: 0
@@ -3123,7 +3064,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134830047
 GameObject:

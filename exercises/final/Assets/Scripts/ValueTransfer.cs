@@ -6,21 +6,17 @@ using UnityEngine.SceneManagement;
 public class ValueTransfer : MonoBehaviour
 {
     public MainMenu mm;
-    public GameManager gm;
 
     public float volumeFinalValue;
     public float volTrade;
     public float sensFinalValue;
     public float senTrade;
-    
+    public float restartSenTrade = 8;
+    public float restartVolTrade = 50;
+    public bool restartValueBool = false;
 
     void Start()
     {
-
-        GameObject gmobj = GameObject.FindWithTag("MM");
-
-        //reference GameManager
-        mm = gmobj.GetComponent<MainMenu>();
 
 
 
@@ -28,11 +24,14 @@ public class ValueTransfer : MonoBehaviour
     void Update()
     {
 
-
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "Menu")
         {
+            GameObject gmobj = GameObject.FindWithTag("MM");
+
+            //reference GameManager
+            mm = gmobj.GetComponent<MainMenu>();
 
             volumeFinalValue = mm.finalVolume;
             sensFinalValue = mm.finalSens;
@@ -41,18 +40,17 @@ public class ValueTransfer : MonoBehaviour
             senTrade = sensFinalValue;
 
         }
-        if (sceneName != "Menu")
+        if (senTrade != 8 && volTrade != 50)
         {
-            GameObject gmobj = GameObject.FindWithTag("GM");
+            restartValueBool = true;
+            restartSenTrade = senTrade;
+            restartVolTrade = volTrade;
 
-            //reference GameManager
-            gm = gmobj.GetComponent<GameManager>();
-
-            if (gm.restart == true)
-            {
-                Destroy(this.gameObject);
-                
-            }
+        }
+        if (restartValueBool == true)
+        {
+            senTrade = restartSenTrade;
+            volTrade = restartVolTrade;
         }
 
     }

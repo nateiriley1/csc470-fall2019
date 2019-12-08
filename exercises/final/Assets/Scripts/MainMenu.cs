@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 
     //reference gm
     public ValueTransfer vt;
+    public GameManager gm;
 
     //Slider Properties
     public Slider sensSlider;
@@ -29,21 +30,39 @@ public class MainMenu : MonoBehaviour
         finalSens = 8;
         finalVolume = 50;
 
-        sensSlider.value = finalSens / 15;
-        volumeSlider.value = finalVolume / 100;
-
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName != "Menu")
+
+        //Call the Gameobject
+        GameObject gmobj = GameObject.FindWithTag("GM");
+
+        //reference GameManager
+        gm = gmobj.GetComponent<GameManager>();
+
+        if (gm.restart == true)
         {
             //Call the Gameobject
-            GameObject gmobj = GameObject.FindWithTag("Transfer");
+            GameObject temp = GameObject.FindWithTag("Transfer");
 
             //reference GameManager
-            vt = gmobj.GetComponent<ValueTransfer>();
-        }
+            vt = temp.GetComponent<ValueTransfer>();
 
-        //seeing if scene is not menu
+            if (sceneName == "Menu" && vt.restartValueBool == false)
+            {
+                sensSlider.value = finalSens / 15;
+                volumeSlider.value = finalVolume / 100;
+            }
+        }
+        if (gm.restart == false)
+        {
+            if (sceneName == "Menu")
+            {
+
+                sensSlider.value = senTemp / 15;
+                volumeSlider.value = volTemp / 100;
+
+            }
+        }
         if (sceneName != "Menu")
         {
             //putting slider values into temp values

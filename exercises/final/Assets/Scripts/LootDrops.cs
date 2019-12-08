@@ -29,26 +29,26 @@ public class LootDrops : MonoBehaviour
 
     //stats change
     public float attackSpeedChange;
+    public bool tempFireChange = false;
+
 
     void Start()
     {
-    
     }
 
     void Update()
     {
-        //pick random gun
+
         lootDrop = GameObject.FindGameObjectsWithTag("loot");
         index = Random.Range(0, lootDrop.Length);
+        currentLoot = lootDrop[index];
 
     }
 
     public void randomDrop()
     {
-        // Pick random gun from array from tag loot
-        currentLoot = lootDrop[index];
-        print(currentLoot.name);
         currentWeaponName = currentLoot.name;
+
 
         if (currentLoot.name == "shotgun")
         {
@@ -76,6 +76,7 @@ public class LootDrops : MonoBehaviour
         {
             
             currentweapon = 5;
+            gm.attackSpeed.SetActive(true);
             
         }
     }
@@ -108,6 +109,7 @@ public class LootDrops : MonoBehaviour
         }
         if (currentweapon == 5)
         {
+            tempFireChange = true;
             attackSpeedOn.SetActive(false);
             attackSpeedChange = 0.5f;
         }
