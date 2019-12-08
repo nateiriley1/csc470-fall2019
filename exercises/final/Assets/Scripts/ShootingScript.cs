@@ -59,13 +59,19 @@ public class ShootingScript : MonoBehaviour
             gm.allowFireTemp = false;
         }
 
+        if (ld.tempBulletSpeed == true)
+        {
+            Bullet_Forward_Force = 1000f;
+            ld.tempBulletSpeed = false;
+        }
+
         //Check if Character
         if (Character)
         {
             //shotgun
             if (shotgun)
             {
-                gm.currentDamage = shotgunDamage;
+                gm.currentDamage = shotgunDamage * ld.tempBulletDamageMult;
                 if (ld.tempFireChange == true)
                 {
                     shotgunAttackSpeed = shotgunAttackSpeed - (shotgunAttackSpeed * ld.attackSpeedChange);
@@ -105,7 +111,7 @@ public class ShootingScript : MonoBehaviour
             
             if (pistol)
             {
-                gm.currentDamage = pistolDamage;
+                gm.currentDamage = pistolDamage * ld.tempBulletDamageMult;
                 if (ld.tempFireChange == true)
                 {
                     pistolAttackSpeed = pistolAttackSpeed - (pistolAttackSpeed * ld.attackSpeedChange);
@@ -132,7 +138,7 @@ public class ShootingScript : MonoBehaviour
             }
             if (m4)
             {
-                gm.currentDamage = m4Damage;
+                gm.currentDamage = m4Damage * ld.tempBulletDamageMult;
                 if (ld.tempFireChange == true)
                 {
                     m4AttackSpeed = m4AttackSpeed - (m4AttackSpeed * ld.attackSpeedChange);
@@ -158,7 +164,7 @@ public class ShootingScript : MonoBehaviour
             }
             if (rpg)
             {
-                gm.currentDamage = rpgDamage;
+                gm.currentDamage = rpgDamage * ld.tempBulletDamageMult;
                 if (ld.tempFireChange == true)
                 {
                     rpgAttackSpeed = rpgAttackSpeed - (rpgAttackSpeed * ld.attackSpeedChange);

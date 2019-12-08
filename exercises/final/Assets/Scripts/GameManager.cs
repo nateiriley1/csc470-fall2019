@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     public GameObject m4;
     public GameObject rpg;
     public GameObject attackSpeed;
+    public GameObject fullHealth;
+    public GameObject bulletSpeed;
+    public GameObject bulletDamage;
 
     //count number of enemies
     GameObject[] enemyArray;
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
     //check if player died
     public bool isDead = false;
     public bool restart = false;
+    public bool restartMenu = false;
 
     //check button clicked
     public bool hitButton = false;
@@ -169,6 +173,9 @@ public class GameManager : MonoBehaviour
         shotgun.SetActive(false);
         rpg.SetActive(false);
         attackSpeed.SetActive(false);
+        fullHealth.SetActive(false);
+        bulletSpeed.SetActive(false);
+        bulletDamage.SetActive(false);
         hitButton = false;
 
         //switch UI
@@ -223,6 +230,7 @@ public class GameManager : MonoBehaviour
     public void TakeActionRestart()
     {
         restart = true;
+        restartMenu = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - levelCount);
 
     }

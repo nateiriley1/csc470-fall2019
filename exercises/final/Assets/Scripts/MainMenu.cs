@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
     //Slider Properties
     public Slider sensSlider;
     public Slider volumeSlider;
-    public float senTemp = 8;
-    public float volTemp = 50;
+    public float senTemp;
+    public float volTemp;
     private float volumeFloat;
     private float sensFloat;
     public Text volume;
@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     public float finalVolume;
 
     public bool sliderChange = false;
+    public bool tempRestart = false;
 
     void Start()
     {
@@ -39,8 +40,9 @@ public class MainMenu : MonoBehaviour
         //reference GameManager
         gm = gmobj.GetComponent<GameManager>();
 
-        if (gm.restart == true)
+        if (gm.restartMenu == true)
         {
+
             //Call the Gameobject
             GameObject temp = GameObject.FindWithTag("Transfer");
 
@@ -49,22 +51,32 @@ public class MainMenu : MonoBehaviour
 
             if (sceneName == "Menu" && vt.restartValueBool == false)
             {
-                sensSlider.value = finalSens / 15;
-                volumeSlider.value = finalVolume / 100;
+                sensSlider.value = vt.senTrade / 15;
+                volumeSlider.value = vt.volTrade / 100;
+
+                gm.restartMenu = false;
+                tempRestart = false;
+                vt.restartValueBool = false;
             }
         }
-        if (gm.restart == false)
-        {
+        else {
             if (sceneName == "Menu")
             {
 
-                sensSlider.value = senTemp / 15;
-                volumeSlider.value = volTemp / 100;
+                sensSlider.value = finalSens / 15;
+                volumeSlider.value = finalVolume / 100;
 
             }
         }
         if (sceneName != "Menu")
         {
+
+            //Call the Gameobject
+            GameObject temp = GameObject.FindWithTag("Transfer");
+
+            //reference GameManager
+            vt = temp.GetComponent<ValueTransfer>();
+
             //putting slider values into temp values
             senTemp = vt.senTrade;
             volTemp = vt.volTrade;
@@ -76,9 +88,12 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
+        if (gm.restart == true)
+        {
+            tempRestart = true;
+        }
 
-
-        Scene currentScene = SceneManager.GetActiveScene();
+            Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
         if (sceneName == "Menu" && sliderChange == true)

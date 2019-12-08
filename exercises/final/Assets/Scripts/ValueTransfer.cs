@@ -8,8 +8,8 @@ public class ValueTransfer : MonoBehaviour
     public MainMenu mm;
 
     public float volumeFinalValue;
-    public float volTrade;
     public float sensFinalValue;
+    public float volTrade;
     public float senTrade;
     public float restartSenTrade = 8;
     public float restartVolTrade = 50;
@@ -18,7 +18,7 @@ public class ValueTransfer : MonoBehaviour
     void Start()
     {
 
-
+        
 
     }
     void Update()
@@ -26,7 +26,8 @@ public class ValueTransfer : MonoBehaviour
 
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "Menu")
+
+        if (sceneName != "tempBeginning")
         {
             GameObject gmobj = GameObject.FindWithTag("MM");
 
@@ -39,19 +40,24 @@ public class ValueTransfer : MonoBehaviour
             volTrade = volumeFinalValue;
             senTrade = sensFinalValue;
 
-        }
-        if (senTrade != 8 && volTrade != 50)
-        {
-            restartValueBool = true;
-            restartSenTrade = senTrade;
-            restartVolTrade = volTrade;
+            if (mm.tempRestart == true && senTrade != 8 && volTrade != 50)
+            {
+                restartValueBool = true;
+                restartSenTrade = senTrade;
+                restartVolTrade = volTrade;
+
+            }
+            if (mm.tempRestart == false)
+            {
+                restartValueBool = false;
+
+            }
+            if (restartValueBool == true)
+            {
+                senTrade = restartSenTrade;
+                volTrade = restartVolTrade;
+            }
 
         }
-        if (restartValueBool == true)
-        {
-            senTrade = restartSenTrade;
-            volTrade = restartVolTrade;
-        }
-
     }
 }

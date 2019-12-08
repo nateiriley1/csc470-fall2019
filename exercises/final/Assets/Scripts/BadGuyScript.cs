@@ -129,7 +129,7 @@ public class BadGuyScript : MonoBehaviour
         {
             //set bullet false
             other.gameObject.SetActive(false);
-
+            chase();
             badGuyHealthNumber -= gm.currentDamage;
             //enemy health
             if (badGuyHealthNumber <= 0)

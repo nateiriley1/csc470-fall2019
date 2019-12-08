@@ -9,6 +9,7 @@ public class LootDrops : MonoBehaviour
 {
     //Call other classes
     public GameManager gm;
+    public PlayerController pc;
 
     //Loot drop array, everything labeled loot
     GameObject[] lootDrop;
@@ -18,6 +19,9 @@ public class LootDrops : MonoBehaviour
     public GameObject m4On;
     public GameObject rpgOn;
     public GameObject attackSpeedOn;
+    public GameObject fullHealthOn;
+    public GameObject bulletSpeedOn;
+    public GameObject bulletDamageOn;
 
     //guns
     public GameObject pistol;
@@ -26,10 +30,13 @@ public class LootDrops : MonoBehaviour
     public GameObject rpg;
     private int currentweapon = 1;
     public string currentWeaponName;
+    public int bulletSpeedChange = 1;
 
     //stats change
     public float attackSpeedChange;
     public bool tempFireChange = false;
+    public bool tempBulletSpeed = false;
+    public int tempBulletDamageMult = 1;
 
 
     void Start()
@@ -79,6 +86,27 @@ public class LootDrops : MonoBehaviour
             gm.attackSpeed.SetActive(true);
             
         }
+        if (currentLoot.name == "Full Health")
+        {
+
+            currentweapon = 6;
+            gm.fullHealth.SetActive(true);
+
+        }
+        if (currentLoot.name == "Bullet Speed")
+        {
+
+            currentweapon = 7;
+            gm.bulletSpeed.SetActive(true);
+
+        }
+        if (currentLoot.name == "Bullet Damage")
+        {
+
+            currentweapon = 8;
+            gm.bulletDamage.SetActive(true);
+
+        }
     }
 
     public void activateLoot()
@@ -112,6 +140,25 @@ public class LootDrops : MonoBehaviour
             tempFireChange = true;
             attackSpeedOn.SetActive(false);
             attackSpeedChange = 0.5f;
+        }
+        if (currentweapon == 6)
+        {
+            pc.currentHealth = 100f;
+            fullHealthOn.SetActive(false);
+
+        }
+        if (currentweapon == 7)
+        {
+            tempBulletSpeed = true;
+            bulletSpeedChange = 2;
+            bulletSpeedOn.SetActive(false);
+
+        }
+        if (currentweapon == 8)
+        {
+            tempBulletDamageMult = 2;
+            bulletSpeedOn.SetActive(false);
+
         }
     }
 }
