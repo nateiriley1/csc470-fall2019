@@ -49,11 +49,17 @@ public class LootDrops : MonoBehaviour
         lootDrop = GameObject.FindGameObjectsWithTag("loot");
         index = Random.Range(0, lootDrop.Length);
         currentLoot = lootDrop[index];
+        //print(currentLoot.name);
 
     }
 
     public void randomDrop()
     {
+        if (gm.temp == true)
+        {
+            randomDropArray();
+        }
+
         currentWeaponName = currentLoot.name;
 
 
@@ -160,5 +166,9 @@ public class LootDrops : MonoBehaviour
             bulletSpeedOn.SetActive(false);
 
         }
+    }
+    void randomDropArray()
+    {
+        gm.temp = false;
     }
 }

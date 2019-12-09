@@ -14,6 +14,8 @@ public class ValueTransfer : MonoBehaviour
     public float restartSenTrade = 8;
     public float restartVolTrade = 50;
     public bool restartValueBool = false;
+    public int VictoryCount = 0;
+    public int CharDeathCount = 0;
 
     void Start()
     {

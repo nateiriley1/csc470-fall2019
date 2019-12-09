@@ -22,6 +22,8 @@ public class MainMenu : MonoBehaviour
     public Text Sens;
     public float finalSens;
     public float finalVolume;
+    public Text DeathText;
+    public Text VictoryText;
 
     public bool sliderChange = false;
     public bool tempRestart = false;
@@ -93,7 +95,7 @@ public class MainMenu : MonoBehaviour
             tempRestart = true;
         }
 
-            Scene currentScene = SceneManager.GetActiveScene();
+        Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
         if (sceneName == "Menu" && sliderChange == true)
@@ -117,6 +119,14 @@ public class MainMenu : MonoBehaviour
             Sens.text = finalSens.ToString("0");
         }
 
+        //Call the Gameobject
+        GameObject temp = GameObject.FindWithTag("Transfer");
+
+        //reference GameManager
+        vt = temp.GetComponent<ValueTransfer>();
+
+        VictoryText.text = vt.VictoryCount.ToString("0") + " Victories";
+        DeathText.text = vt.CharDeathCount.ToString("0") + " Deaths";
     }
 
     public void PlayGame()

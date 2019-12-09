@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //calling other scripts
     public LootDrops ld;
     public PlayerController pc;
+    public ValueTransfer vt;
 
     //count dead enemy and display number
     public int deathCount = 0;
@@ -21,12 +22,17 @@ public class GameManager : MonoBehaviour
     //damage
     public int currentDamage;
 
+    //vicotry count
+    public Text victoryCountText;
+    public Text deathCountCharText;
+
     //calling UI scenes
     public GameObject InGameUI;
     public GameObject RoundWonUI;
     public GameObject NextLevelUI;
     public GameObject DeadScreen;
     public GameObject OptionsMenu;
+    public GameObject EndScreen;
 
 
     //calling cameras
@@ -58,6 +64,8 @@ public class GameManager : MonoBehaviour
     public bool isDead = false;
     public bool restart = false;
     public bool restartMenu = false;
+    public bool temp = false;
+    public bool finalBool = false;
 
     //check button clicked
     public bool hitButton = false;
@@ -93,7 +101,7 @@ public class GameManager : MonoBehaviour
         {
             level.text = "Level " + levelCount.ToString("0");
             lowRange = 1 - (levelCount * 0.1f);
-            highRange = (6 - (levelCount) - (levelCount * .2f));
+            highRange = (6 - (levelCount - 1) - (levelCount * .1f));
 
 
             //array of enemies
@@ -106,6 +114,14 @@ public class GameManager : MonoBehaviour
             deathCountText.text = enemyCount.ToString("0") + " Remaining";
             if (isDead == true && restart == false)
             {
+                //Call the Gameobject
+                GameObject temp = GameObject.FindWithTag("Transfer");
+
+                //reference GameManager
+                vt = temp.GetComponent<ValueTransfer>();
+
+                vt.CharDeathCount += 1;
+
                 pause = true;
 
                 //let camera free to fire
@@ -117,6 +133,8 @@ public class GameManager : MonoBehaviour
                 //switch to death screen
                 InGameUI.SetActive(false);
                 DeadScreen.SetActive(true);
+
+                isDead = false;
 
             }
             if (Input.GetKeyDown("escape") && pause == false)
@@ -142,27 +160,53 @@ public class GameManager : MonoBehaviour
     }
     public void roundEnd()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName != "Level5")
+        {
+            temp = true;
+            ld.randomDrop();
 
-        ld.randomDrop();
-        print(ld.currentLoot.name);
+            //let camera free to fire
+            Cursor.lockState = CursorLockMode.None;
 
-        //let camera free to fire
-        Cursor.lockState = CursorLockMode.None;
+            //switch ui
+            InGameUI.SetActive(false);
+            RoundWonUI.SetActive(true);
 
-        //switch ui
-        InGameUI.SetActive(false);
-        RoundWonUI.SetActive(true);
+            //say loot name
+            lootName.text = "Do you want the " + ld.currentWeaponName + "?";
 
-        //say loot name
-        lootName.text = "Do you want the " + ld.currentWeaponName + "?";
+            //switch camera to display loot
+            Character.SetActive(false);
+            ItemDisplay.SetActive(true);
 
-        //switch camera to display loot
-        Character.SetActive(false);
-        ItemDisplay.SetActive(true);
+            //stop shooting
+            allowFireFinal = false;
+        }
+        else
+        {
+            //stop shooting
+            allowFireFinal = false;
+            Character.SetActive(false);
+            //let camera free to fire
+            Cursor.lockState = CursorLockMode.None;
 
-        //stop shooting
-        allowFireFinal = false;
+            //Call the Gameobject
+            GameObject temp = GameObject.FindWithTag("Transfer");
 
+            //reference GameManager
+            vt = temp.GetComponent<ValueTransfer>();
+
+            //switch ui
+            EndScreen.SetActive(true);
+            InGameUI.SetActive(false);
+            vt.VictoryCount += 1;
+            victoryCountText.text = "You have won " + vt.VictoryCount.ToString("0") + " time(s)!!!";
+            deathCountCharText.text = "You have died " + vt.CharDeathCount.ToString("0") + " time(s)!!!";
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
 
     }
 
@@ -198,6 +242,9 @@ public class GameManager : MonoBehaviour
         shotgun.SetActive(false);
         rpg.SetActive(false);
         attackSpeed.SetActive(false);
+        fullHealth.SetActive(false);
+        bulletSpeed.SetActive(false);
+        bulletDamage.SetActive(false);
         hitButton = false;
 
         //move chracter back
@@ -231,7 +278,7 @@ public class GameManager : MonoBehaviour
     {
         restart = true;
         restartMenu = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - levelCount);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - levelCount -1);
 
     }
 

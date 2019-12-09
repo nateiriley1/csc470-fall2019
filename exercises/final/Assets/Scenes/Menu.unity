@@ -661,6 +661,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203839836}
   m_CullTransparentMesh: 0
+--- !u!1 &253932050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253932053}
+  - component: {fileID: 253932052}
+  - component: {fileID: 253932051}
+  m_Layer: 5
+  m_Name: Victory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &253932051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253932050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &253932052
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253932050}
+  m_CullTransparentMesh: 0
+--- !u!224 &253932053
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253932050}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 434216731}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -241.27, y: -250}
+  m_SizeDelta: {x: 482.55, y: 57.6}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &322386409
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +1024,8 @@ RectTransform:
   - {fileID: 2134830048}
   - {fileID: 1137811092}
   - {fileID: 513347873}
+  - {fileID: 253932053}
+  - {fileID: 553860162}
   m_Father: {fileID: 814433465}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1271,6 +1352,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549592798}
   m_CullTransparentMesh: 0
+--- !u!1 &553860161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553860162}
+  - component: {fileID: 553860163}
+  - component: {fileID: 553860164}
+  m_Layer: 5
+  m_Name: Deaths
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &553860162
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553860161}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 434216731}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 238.79, y: -250}
+  m_SizeDelta: {x: 477.57, y: 65.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &553860163
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553860161}
+  m_CullTransparentMesh: 0
+--- !u!114 &553860164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553860161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &578999205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +2821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vt: {fileID: 0}
+  gm: {fileID: 0}
   sensSlider: {fileID: 384040304}
   volumeSlider: {fileID: 27811973}
   senTemp: 0
@@ -2669,7 +2830,10 @@ MonoBehaviour:
   Sens: {fileID: 1152018500}
   finalSens: 0
   finalVolume: 0
+  DeathText: {fileID: 553860164}
+  VictoryText: {fileID: 253932051}
   sliderChange: 0
+  tempRestart: 0
 --- !u!4 &1365686438
 Transform:
   m_ObjectHideFlags: 0
@@ -3023,21 +3187,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ld: {fileID: 0}
   pc: {fileID: 0}
+  vt: {fileID: 0}
   deathCount: 0
   deathCountText: {fileID: 0}
   lootName: {fileID: 0}
   currentDamage: 0
+  victoryCountText: {fileID: 0}
+  deathCountCharText: {fileID: 0}
   InGameUI: {fileID: 0}
   RoundWonUI: {fileID: 0}
   NextLevelUI: {fileID: 0}
   DeadScreen: {fileID: 0}
   OptionsMenu: {fileID: 0}
+  EndScreen: {fileID: 0}
   Character: {fileID: 0}
   ItemDisplay: {fileID: 0}
   shotgun: {fileID: 0}
   m4: {fileID: 0}
   rpg: {fileID: 0}
   attackSpeed: {fileID: 0}
+  fullHealth: {fileID: 0}
+  bulletSpeed: {fileID: 0}
+  bulletDamage: {fileID: 0}
   enemyCount: 0
   allowFireFinal: 1
   allowFireTemp: 0
@@ -3045,6 +3216,9 @@ MonoBehaviour:
   pauseLeave: 0
   isDead: 0
   restart: 0
+  restartMenu: 0
+  temp: 0
+  finalBool: 0
   hitButton: 0
   levelCount: 1
   level: {fileID: 0}
